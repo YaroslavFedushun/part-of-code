@@ -1,0 +1,62 @@
+<div class="tocoDesign">
+  <div class="tocoDesign-left">
+    <circle-progress [percent]="getPersents()"
+                     [radius]="75"
+                     [outerStrokeWidth]="11"
+                     [innerStrokeWidth]="5"
+                     [outerStrokeColor]="'#ff7902'"
+                     [innerStrokeColor]="'#ececf2'"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [titleFontSize]="28"
+                     [unitsFontSize]="28"
+                     [subtitleFontSize]="11"
+                     [titleFontWeight]="600"
+                     [unitsFontWeight]="600"
+                     [subtitleFontWeight]="600"
+                     [titleColor]="'#3d4852'"
+                     [unitsColor]="'#3d4852'"
+                     [subtitleColor]="'#868686'"
+                     [subtitle]="'NEW AFFILIATE'">
+    </circle-progress>
+  </div>
+
+  <div class="tocoDesign-right">
+    <p class="topNotice">You are registering as an <span>affiliate</span></p>
+
+    <!--*********** FIRST BLOCK ***********-->
+    <div [class.hidden]="hide_1">
+      <app-account-details-reg-step (goNext)='goNextStep($event)'
+                                     (formData)='accountDetailse=$event'></app-account-details-reg-step>
+    </div>
+
+    <!--*********** SECOND BLOCK ***********-->
+    <div [class.hidden]="hide_2">
+      <app-tax-details-reg-step (goNext)='goNextStep($event)'
+                    (goBack)='goBackStep($event)'
+                    (w9Form)='w9Form=$event'
+                    (formData)='taxDetails=$event'></app-tax-details-reg-step>
+    </div>
+
+    <!--*********** THIRD BLOCK ***********-->
+    <div [class.hidden]="hide_3">
+      <app-address-reg-step (goNext)='goNextStep($event)'
+                            (goBack)='goBackStep($event)'
+                            (formData)='address=$event'></app-address-reg-step>
+    </div>
+
+    <!--*********** FOURTH BLOCK ***********-->
+    <div [class.hidden]="hide_4">
+      <app-affiliate-settings-reg-step (create)='createAffiliate($event)'
+                                       (goBack)='goBackStep($event)'
+                                       (fileLogo)='fileLogo=$event'></app-affiliate-settings-reg-step>
+    </div>
+
+    <!--***** LAST THANK YOU STEP *********-->
+    <div class="separate-block thankYou" [class.hidden]="hide_thankYou">
+      <h1>Thank you for interest in the Powered By Toco Affiliate Program.</h1>
+      <p>Your application is under review, you will receive notice of approval within 2 - 4 Business days. </p>
+    </div>
+       
+  </div>
+</div>

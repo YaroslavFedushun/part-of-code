@@ -1,0 +1,151 @@
+@import "../../../../assets/scss/variables";
+
+.clicked {
+  .slider:before {
+    background-color: $quote-btn-active-bg;
+  }
+
+  .notActive {
+    .switch-no {
+      color: $quote-btn-not-active-text-color;
+    }
+
+    .switch-yes {
+      color: $quote-btn-active-text-color;
+    }
+  }
+
+  .active {
+    .switch-yes {
+      color: $quote-btn-not-active-text-color;
+    }
+
+    .switch-no {
+      color: $quote-btn-active-text-color;
+    }
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 142px;
+  height: 41px;
+  border-radius: 5px;
+}
+
+.switch-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.switch-yes {
+  margin-left: 0px;
+  margin-top: 0px;
+  width: 72px;
+  height: 41px;
+  text-align: center;
+  padding-top: 9px;
+}
+
+.switch-no {
+  margin-left: 72px;
+  margin-top: 0px;
+  width: 71px;
+  height: 42px;
+  text-align: center;
+  padding-top: 9px;
+}
+
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $quote-btn-not-active-bg;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 41px;
+  width: 71px;
+  left: 0px;
+  transition: 0.4s;
+}
+
+.active .slider {
+  background-color: $quote-btn-not-active-bg;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $quote-btn-not-active-bg;
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+.active {
+  .switch-yes {
+    color: $quote-btn-not-active-text-color;
+  }
+
+  .switch-no {
+    color: $quote-btn-active-text-color;
+  }
+
+  .slider:before {
+    -webkit-transform: translateX(72px);
+    -ms-transform: translateX(72px);
+    transform: translateX(72px);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+.notActive {
+  .switch-yes {
+    color: $quote-btn-not-active-text-color;
+  }
+
+  .switch-no {
+    color: $quote-btn-not-active-text-color;
+  }
+
+  .slider:before {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}

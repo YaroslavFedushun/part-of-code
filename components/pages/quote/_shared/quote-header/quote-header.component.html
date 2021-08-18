@@ -1,0 +1,11 @@
+<div class="header-body" [style.background-color]="headerStyle.bg_color">
+  <div class="header-left">
+    <img src="{{imgUrl}}" class="logo" alt="{{user.affiliateSettings.nameOfBusiness}}" /><br />
+    <span class="company-name"
+          [style.color]="headerStyle.text_color">{{user.affiliateSettings.nameOfBusiness}}</span>
+  </div>
+  <div class="header-right">
+    <span [style.color]="headerStyle.text_color" class="number"><i [style.color]="headerStyle.icon_color" class="material-icons">  local_phone</i> {{user.affiliateSettings.phone  | mask: '000-000-0000'}}</span><br />
+    <span [style.color]="headerStyle.text_color" class="email"><i [style.color]="headerStyle.icon_color" class="material-icons">  mail_outline</i> {{user.affiliateSettings.email}}</span>
+  </div>
+</div>

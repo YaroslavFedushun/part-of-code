@@ -1,0 +1,72 @@
+<form [formGroup]="myForm" class="tocoDesign">
+  <div class="row">
+    <!--  First Name  -->
+    <div class="col-sm-6">
+      <mat-form-field>
+        <input matInput placeholder="First name" [errorStateMatcher]="matcher" type="text" id="firstName"
+               formControlName="firstName">
+        <mat-error *ngIf="myForm.controls['firstName'].errors && myForm.controls['firstName'].errors.pattern">
+          Please enter a valid first name
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['firstName'].errors && myForm.controls['firstName'].errors.required">
+          First name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!--  Last Name  -->
+    <div class="col-sm-6">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Last name" [errorStateMatcher]="matcher" id="lastName"
+               formControlName="lastName">
+        <mat-error *ngIf="myForm.controls['lastName'].errors && myForm.controls['lastName'].errors.pattern">
+          Please enter a valid first name
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['lastName'].errors && myForm.controls['lastName'].errors.required">
+          First name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <!--  Email Address  -->
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Email address" [errorStateMatcher]="matcher" id="email"
+               formControlName="email">
+        <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.email">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.required">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <!--  Phone Number  -->
+    <div class="col-sm-6">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Primary phone" [errorStateMatcher]="matcher" mask="(000) 000-0000"
+               id="primaryPhone" formControlName="primaryPhone">
+        <mat-error *ngIf="myForm.controls['primaryPhone'].errors &&
+            (myForm.controls['primaryPhone'].errors.pattern || myForm.controls['primaryPhone'].errors['Mask error'])">
+          Please enter a valid cell phone
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['primaryPhone'].errors && myForm.controls['primaryPhone'].errors.required">
+          Primary phone is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!--  Secondary Phone  -->
+    <div class="col-sm-6">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Secondary phone" [errorStateMatcher]="matcher" mask="(000) 000-0000"
+               id="secondaryPhone" formControlName="secondaryPhone">
+        <mat-error *ngIf="myForm.controls['secondaryPhone'].errors &&
+            (myForm.controls['secondaryPhone'].errors.pattern || myForm.controls['secondaryPhone'].errors['Mask error'])">
+          Please enter a valid secondary phone
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

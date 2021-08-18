@@ -1,0 +1,24 @@
+@import "../../../../../assets/scss/functions";
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/toco-theme";
+
+.body {
+  width:100%;
+  height:100%;
+}
+
+.form {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 550px;
+  margin: 0 auto;
+}
+
+  h1 {
+    color: $quote-h1-color-default;
+    font-weight: 800;
+    font-size: 2em;
+  }
+
+
+

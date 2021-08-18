@@ -1,0 +1,240 @@
+<form [formGroup]="myForm">
+  <div class="separate-block ">
+    <div class="row form-group">
+      <div class="col-sm">
+        <!--  VIN Number  -->
+        <div *ngIf="hasVin">
+          <mat-form-field>
+            <input type="text"
+                   mask="AAAAAAAAAAAAAAAAA"
+                   id="vin"
+                   aria-describedby="vinHelp"
+                   formControlName="vin"
+                   matInput
+                   placeholder="VIN Number"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="myForm.controls['vin'].errors && myForm.controls['vin'].errors.required">
+              Vin code is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="myForm.controls['vin'].errors &&
+            (myForm.controls['vin'].errors.pattern || myForm.controls['vin'].errors['Mask error'])">
+              Please enter a valid vin
+            </mat-error>
+          </mat-form-field>
+          <span class="question-popover"
+                [ngbPopover]="popContent"
+                triggers="mouseenter:mouseleave">?</span>
+          <ng-template #popContent><b>Vehicle Identification Number (VIN)</b> - The most common place to find your VIN is on the driver's side dashboard near the windshield, although it can sometimes be found on a sticker on the inside of your door. Depending on your state, you may also be able to find it on your vehicle title, registration card or insurance documents.</ng-template>
+        </div>
+        <label>
+          <span id="toggleVin"
+                (click)="toggleVin()">
+            <small *ngIf="hasVin" id="vinHelp" class="form-text text-muted field-descript a">Don’t have VIN?</small>
+            <small *ngIf="!hasVin" class="form-text text-muted field-descript a">Enter VIN Number</small>
+          </span>
+        </label>
+        <div *ngIf="!hasVin" class="vehicleSpecData">
+          <!--  Vehicle Year  -->
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-select formControlName="vehicleYear"
+                            placeholder="Vehicle year">
+                  <mat-option *ngFor="let year of years" [value]="year">
+                    {{ year }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <!--  Vehicle model  -->
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-select formControlName="vehicleMake"
+                            placeholder="Vehicle make">
+                  <mat-option *ngFor="let make of makes" [value]="make">
+                    {{ make }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+            <!--  Vehicle make  -->
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-select formControlName="vehicleModel"
+                            placeholder="Vehicle model">
+                  <mat-option *ngFor="let model of models" [value]="model">
+                    {{ model }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <!--  Current Vehicle Mileage  -->
+      <div class="col-sm">
+        <mat-form-field>
+          <input type="text"
+                 mask="000,000"
+                 [validation]="false"
+                 id="vehicleMileage"
+                 aria-describedby="vehicleMileageHelp"
+                 formControlName="vehicleMileage"
+                 matInput
+                 placeholder="Current Vehicle Mileage">
+          <mat-error *ngIf="myForm.controls['vehicleMileage'].errors && myForm.controls['vehicleMileage'].errors.required">
+            Current Vehicle Mileage is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['vehicleMileage'].errors &&
+            (myForm.controls['vehicleMileage'].errors.pattern || myForm.controls['vehicleMileage'].errors['Mask error'])">
+            Please enter a valid current vehicle mileage
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--  Vehicle towing? -->
+    <div class="row form-group">
+      <div class="col-sm">
+        <label class="field-name"
+               [class.errore-requird]="submitClicked && myForm.controls['heavytowing'].errors && myForm.controls['heavytowing'].errors.required">
+          Is vehicle used for towing? <strong class="required-in">required</strong>
+        </label><br />
+        <app-yes-no-button [toggle]="toggleTowing" (toggleChange)="toggleTowing=$event; setData('heavytowing', toggleTowing)"></app-yes-no-button>
+      </div>
+    </div>
+    <!--  Vehicle commercial? -->
+    <div class="row form-group">
+      <div class="col-sm">
+        <label class="field-name"
+               [class.errore-requird]="submitClicked && myForm.controls['commercialuse'].errors && myForm.controls['commercialuse'].errors.required">
+          Is vehicle used for commercial purposes? <strong class="required-in">required</strong>
+        </label><br />
+        <app-yes-no-button [toggle]="toggleCommerc" (toggleChange)="toggleCommerc=$event; setData('commercialuse', toggleCommerc)"></app-yes-no-button>
+      </div>
+    </div>
+    <div class="row form-group"
+         *ngIf="toggleCommerc">
+      <div class="col-sm">
+        <label class="field-name">Please select what type of commercial use:</label><br />
+        <div class="checkboxes-block">
+          <!--  Light Commercial? -->
+          <div class="checkboxes-item">
+            <div class="checkboxes-input">
+              <input type="checkbox" [(checklist)]="commercUseItems" [checklistValue]="'Light Commercial'" />
+            </div>
+            <div class="checkboxes-descr">Farming or ranching work (excluding snow-removal), job-site activities, service or repair work, delivery of goods.</div>
+          </div><br />
+          <!--  Uber / Lyftv? -->
+          <div class="checkboxes-item">
+            <div class="checkboxes-input">
+              <input type="checkbox" [(checklist)]="commercUseItems" [checklistValue]="'Uber / Lyft'" />
+            </div>
+            <div class="checkboxes-descr">
+              Rental, taxi, limousine, shuttle, Uber, Lyft.
+            </div>
+          </div><br />
+          <!--  Heavy Commercial? -->
+          <div class="checkboxes-item">
+            <div class="checkboxes-input">
+              <input type="checkbox" [(checklist)]="commercUseItems" [checklistValue]="'Heavy Commercial'" />
+            </div>
+            <div class="checkboxes-descr">
+              Snow removal, towing/wrecker service, dumping (dump beds), cherry picking, lifting or hoisting, police or emergency service, principally off-road use, prearranged or organized racing or competitive driving.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <!--  Odometer altered? -->
+      <div class="col-sm">
+        <label class="field-name"
+               [class.errore-requird]="submitClicked && myForm.controls['odometeraltered'].errors && myForm.controls['odometeraltered'].errors.required">
+          Has odometer stopped working or been altered in any way? <strong class="required-in">required</strong>
+        </label><br />
+        <app-yes-no-button [toggle]="toggleOdometer" (toggleChange)="toggleOdometer=$event; setData('odometeraltered', toggleOdometer)"></app-yes-no-button>
+      </div>
+    </div>
+    <!--  Miles each year? -->
+    <div class=" row">
+      <div class="col-sm-12">
+        <label class="field-name" [class.errore-requird]="submitClicked && !milesperyear">On average, how many miles do you drive each year? <span class="required-in">(required)</span></label>
+      </div>
+    </div>
+    <div class="row form-group radio">
+      <div class="col-sm-4">
+        <button type="button"
+                id="value2500"
+                (click)="setMilesPerYear('2500')"
+                [class.active]="milesperyear == 2500"
+                class="btn btn-lg btn-toco-primary">
+          5,000 or less
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button"
+                id="value7500"
+                (click)="setMilesPerYear('7500')"
+                [class.active]="milesperyear == 7500"
+                class="btn btn-lg btn-toco-primary">
+          5,000 - 9,999
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button"
+                id="value12500"
+                (click)="setMilesPerYear('12500')"
+                [class.active]="milesperyear == 12500"
+                class="btn btn-lg btn-toco-primary">
+          10,000 - 14,999
+        </button>
+      </div>
+    </div>
+    <div class="row form-group radio">
+      <div class="col-sm-4">
+        <button type="button"
+                id="value17500"
+                (click)="setMilesPerYear('17500')"
+                [class.active]="milesperyear == 17500"
+                class="btn btn-lg btn-toco-primary">
+          15,000 - 19,999
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button"
+                id="value22500"
+                (click)="setMilesPerYear('22500')"
+                [class.active]="milesperyear == 22500"
+                class="btn btn-lg btn-toco-primary">
+          20,000 - 25,000
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button"
+                id="value25000"
+                (click)="setMilesPerYear('25000')"
+                [class.active]="milesperyear == 25000"
+                class="btn btn-lg btn-toco-primary">
+          25,000 or more
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--  Submit -->
+  <div class=" row form-group">
+    <div class="col-sm-4">
+      <button mat-button
+              [style.background-color]="style.body_main_color"
+              id="submitButton"
+              (click)="submit()"
+              class="btn btn-lg btn-toco-secondary button-text-shadow">
+        GET QUOTE
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,48 @@
+<div class="tocoDesign">
+  <form [formGroup]="myForm" class="separate-block mat-display">
+    <h1>Account sign up details</h1>
+
+    <!--  Name of Business  -->
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field>
+          <input matInput
+                 placeholder="Name of business"
+                 type="text"
+                 id="nameOfBusiness"
+                 formControlName="nameOfBusiness"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['nameOfBusiness'].errors && myForm.controls['nameOfBusiness'].errors.required">
+            Name of business is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <app-contact-account-reg-step [myForm]="parentContactForm"></app-contact-account-reg-step>
+
+    <!--  Secondary contact  -->
+    <div class="row secondaryContact">
+      <div class="col-sm">
+        <mat-checkbox color="primary"
+                      formControlName="secondaryContact">
+          Add secondary contact
+        </mat-checkbox>
+      </div>
+    </div>
+
+    <app-contact-account-reg-step *ngIf="myForm.value.secondaryContact"
+                                  [myForm]="parentAdditionalContactForm"></app-contact-account-reg-step>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" (click)="submit()"
+                class="submit mat-stroked-button mat-stroked-button-primary"
+                mat-stroked-button>
+          NEXT <i class="material-icons">arrow_forward</i>
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>

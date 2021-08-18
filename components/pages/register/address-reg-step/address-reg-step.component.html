@@ -1,0 +1,68 @@
+<div class="tocoDesign">
+  <form [formGroup]="myForm" class="separate-block mat-display">
+    <h1>Business address</h1>
+
+    <app-address-autocomplete-by-google *ngIf="autocomplete_active"
+                                        (setAddress)="getAddress($event)"
+                                        adressType="geocode"></app-address-autocomplete-by-google>
+    <div class="row">
+      <!--  Address  -->
+      <div class="col-sm-7">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Address" [errorStateMatcher]="matcher" id="address"
+                 formControlName="address">
+          <mat-error *ngIf="myForm.controls['address'].errors && myForm.controls['address'].errors.required">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--  City  -->
+      <div class="col-sm-5">
+        <mat-form-field>
+          <input type="text" matInput placeholder="City" [errorStateMatcher]="matcher" id="city"
+                 formControlName="city">
+          <mat-error *ngIf="myForm.controls['city'].errors && myForm.controls['city'].errors.required">
+            City is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!--  State  -->
+      <div class="col-sm-7">
+        <mat-form-field>
+          <input type="text" matInput placeholder="State" [errorStateMatcher]="matcher" id="state"
+                 formControlName="state">
+          <mat-error *ngIf="myForm.controls['state'].errors && myForm.controls['state'].errors.required">
+            State is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--  Zip Code  -->
+      <div class="col-sm-5">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Zip code" [errorStateMatcher]="matcher" mask="00000" id="zipCode"
+                 formControlName="zipCode">
+          <mat-error *ngIf="myForm.controls['zipCode'].errors &&
+            (myForm.controls['zipCode'].errors.pattern || myForm.controls['zipCode'].errors['Mask error'])">
+            Please enter a valid cell phone
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['zipCode'].errors && myForm.controls['zipCode'].errors.required">
+            Zip code is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="goBackStep()" class="submit arrow-back mr-2 mat-stroked-button-primary" mat-stroked-button>
+          <i class="material-icons">arrow_back</i> BACK
+        </button>
+        <button type="submit" (click)="goNextStep()" class="submit mat-stroked-button-active mat-stroked-button-primary" mat-stroked-button>
+          NEXT <i class="material-icons">arrow_forward</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

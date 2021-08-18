@@ -1,0 +1,17 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+<div class="toco">
+  <app-header></app-header>
+  <main>
+      <router-outlet></router-outlet>
+
+      <!--loader-->
+      <ngx-ui-loader fgsColor="#557efa"
+                     pbColor="#557efa"
+                     blur="2"
+                     overlayColor="rgba(128,128,128,0.8)"></ngx-ui-loader>
+      <!--notifier-->
+      <notifier-container></notifier-container>
+  </main>
+</div>
+
+

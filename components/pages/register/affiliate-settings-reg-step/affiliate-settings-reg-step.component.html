@@ -1,0 +1,89 @@
+<div class="tocoDesign">
+  <form [formGroup]="myForm" class="separate-block mat-display">
+
+    <h1>Affiliate settings</h1>
+    <p class="notice">The information provided below will be displayed on your affiliate page visible to visitors.</p>
+    <!--  Name of Business  -->
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field>
+          <input matInput placeholder="Name of business" type="text" id="nameOfBusiness"
+                 formControlName="nameOfBusiness" [errorStateMatcher]="matcher">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <!--  Cell phone  -->
+      <div class="col-sm-6">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Cell phone" [errorStateMatcher]="matcher" mask="(000) 000-0000"
+                 id="phone" formControlName="phone">
+          <mat-error *ngIf="myForm.controls['phone'].errors &&
+            (myForm.controls['phone'].errors.pattern || myForm.controls['phone'].errors['Mask error'])">
+            Please enter a valid cell phone
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--  Email Address  -->
+      <div class="col-sm-6">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email address" [errorStateMatcher]="matcher" id="email"
+                 formControlName="email">
+          <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.pattern">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!--  Chosen URL   -->
+      <div class="col-sm-6 url-field">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Choose your new URL" [errorStateMatcher]="matcher" id="chosenURL"
+                 formControlName="chosenURL">
+          <mat-error *ngIf="myForm.controls['chosenURL'].errors && myForm.controls['chosenURL'].errors.required">
+            Your url is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 subdomain">
+        <span>.tocowarranty.com</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <label class="field-name" [class.errore]="!imgURL && createCleaced">Your business logo <strong *ngIf="!imgURL && createCleaced">required</strong></label><br />
+      </div>
+      <!--  Logo upload v1  -->
+      <div class="col-sm-12" *ngIf="logoUploadSimple_active">
+        <input class="btn-upload" #file type="file" accept='image/*' (change)="preview(file.files)" />
+      </div>
+      <!--  Logo upload v2  -->
+      <div class="col-sm-12" *ngIf="logoUploadCDN_active">
+        <ngx-uploadcare-widget images-only="true"
+                               public-key="bd35deebea2fb6342415"
+                               (on-upload-complete)="yourOnUploadHandler($event)">
+        </ngx-uploadcare-widget>
+      </div>
+      <div class="col-sm-12" *ngIf="imgURL">
+        <div class="image-block">
+          <img [src]="imgURL">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="goBackStep()" class="submit mat-stroked-button-primary arrow-back mr-2" mat-stroked-button>
+          <i class="material-icons">arrow_back</i> BACK
+        </button>
+        <button type="submit"
+                (click)="createAffiliate()"
+                class="createAffiliate submit mat-stroked-button-active activeButton" mat-button>
+          CREATE ACCOUNT
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

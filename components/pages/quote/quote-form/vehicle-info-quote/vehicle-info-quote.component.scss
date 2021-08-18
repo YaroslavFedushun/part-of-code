@@ -1,0 +1,130 @@
+@import "../../../../../../assets/scss/_functions";
+@import "../../../../../../assets/scss/variables";
+@import "../../../../../../assets/scss/toco-theme";
+@import "../../../../../../assets/scss/quote-form";
+
+.radio {
+
+  input[type=radio] {
+    display: none;
+  }
+
+  .radio-inline, span.btn {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 9px;
+  }
+
+  .btn-toco-primary {
+    cursor: pointer;
+    background-color: $quote-btn-not-active-bg;
+    border: 0;
+    color: $quote-btn-not-active-text-color;
+    font-weight: 300;
+    font-size: 16px;
+    height: 41px;
+    margin-bottom: 10px;
+  }
+
+  .btn-toco-primary.active, .btn-toco-primary.active:hover {
+    background-color: $quote-btn-active-bg;
+    color: $quote-btn-active-text-color;
+  }
+
+
+  .btn-toco-primary:hover {
+    background-color: #c7c7c7;
+  }
+}
+
+.checkboxes-block {
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+
+
+  input[type=checkbox] {
+    width: 35px;
+    height: 35px;
+    border-radius: 0;
+    background: #FFFFFF;
+    border: 1px solid gray;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: image-url('checked.png') -30px 4px no-repeat #FFFFFF;
+  }
+
+  input[type=checkbox]:checked {
+    background: image-url('checked.png') 5px 4px no-repeat #FFFFFF;
+  }
+
+  .checkboxes-item {
+    display: flex;
+  }
+
+  .checkboxes-input {
+    padding-top: 1px;
+  }
+
+  .checkboxes-descr {
+    padding-left: 16px;
+  }
+}
+
+.question-popover {
+  color: #fff;
+  background-color: $main-color-gray-popover-icon;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 0 8px 0 8px;
+  position: absolute;
+  margin-top: 18px;
+  margin-left: -28px;
+  cursor: context-menu;
+}
+
+.vehicleSpecData {
+  margin-top: 20px;
+}
+
+.field-name {
+  font-size: 16px;
+  line-height: 19px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+.field-descript {
+  font-size: 14px;
+  color: $main-color-dark-orange !important;
+}
+
+.btn-toco-secondary {
+  font-size: 20px;
+  width: 176px;
+  height: 54px;
+}
+
+
+.mat-form-field {
+  width: 100%;
+}
+
+
+.required-in {
+  display: none;
+}
+
+.errore-requird {
+  color: $mat-errore;
+
+  .required-in {
+    display: inherit;
+  }
+}

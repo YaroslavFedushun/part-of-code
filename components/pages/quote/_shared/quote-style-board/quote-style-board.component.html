@@ -1,0 +1,53 @@
+<div class="edit-quote-dashboard">
+  <div class="row">
+    <div class="col-sm-12 title">
+      <h1>Create your own custom design</h1>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-4">
+      <input [style.background]="headerStyles.bg_color"
+             [cpPosition]="'bottom'"
+             [colorPicker]="headerStyles.bg_color"
+             (colorPickerChange)="headerStyles.bg_color = $event; colorChanged()" />
+      Header background
+    </div>
+    <div class="col-sm-4">
+      <input [style.background]="headerStyles.text_color"
+             [cpPosition]="'bottom'"
+             [colorPicker]="headerStyles.text_color"
+             (colorPickerChange)="headerStyles.text_color = $event; colorChanged()" />
+      Header text
+    </div>
+    <div class="col-sm-4">
+      <input [style.background]="headerStyles.icon_color"
+             [cpPosition]="'left'"
+             [colorPicker]="headerStyles.icon_color"
+             (colorPickerChange)="headerStyles.icon_color = $event; colorChanged()" />
+      Header icon
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 pt-8">
+      <input [style.background]="bodyStyles.bg_color"
+             [cpPosition]="'bottom'"
+             [colorPicker]="bodyStyles.bg_color"
+             (colorPickerChange)="bodyStyles.bg_color = $event; colorChanged()" />
+      Body background
+    </div>
+    <div class="col-sm-4 pt-8">
+      <input [style.background]="bodyStyles.body_main_color"
+             [cpPosition]="'bottom'"
+             [colorPicker]="bodyStyles.body_main_color"
+             (colorPickerChange)="bodyStyles.body_main_color = $event; colorChanged()" />
+      Body main color
+    </div>
+    <div class="col-sm-4">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="setRootColors(); colorChanged()" class="btn btn-secondary">Reset</button>
+        <button type="button" (click)="save()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+

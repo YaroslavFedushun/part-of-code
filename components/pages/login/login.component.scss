@@ -1,0 +1,39 @@
+@import "../../../../assets/scss/toco-theme";
+
+
+  .notice {
+    color: $main-color-orange;
+    margin-bottom:35px
+  }
+  
+  
+  .field-name {
+    font-size: 15px;
+    color: $main-color-layte-gray;
+    margin-top: 10px;
+  }
+    
+
+  
+  .tocoDesign-left {
+    padding-left: 60px;
+    padding-top: 71px;
+  }
+  
+  
+  @media screen and (max-width: 1070px) {
+    .tocoDesign-left {
+      padding-left: 34px;
+    }
+   }
+  
+   
+  @media screen and (max-width: 845px) {
+    .topNotice {
+      display: none;  
+    }
+  
+    h1{
+      margin-top: 72px;
+    }
+   }

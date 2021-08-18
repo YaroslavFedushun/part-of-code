@@ -1,0 +1,16 @@
+<div class="body" [style.background-color]="bodyStyle.bg_color">
+  <div class="form">
+    <div [class.hide]="!display_lead_info">
+      <h1 [style.color]="bodyStyle.body_main_color">{{h1_lead_info}}</h1>
+      <app-lead-info-quote (goNext)='goNextStep($event)'
+                           [setColor]="bodyStyle"></app-lead-info-quote>
+    </div>
+    <div [class.hide]="!display_vihicle_info">
+      <h1 [style.color]="bodyStyle.body_main_color">{{h1_Vehicle_info}}</h1>
+      <app-vehicle-info-quote (goNext)='submit($event)'
+                              [setColor]="bodyStyle"
+                              [lead_info]="lead_info"></app-vehicle-info-quote>
+    </div>
+  </div>
+</div>
+

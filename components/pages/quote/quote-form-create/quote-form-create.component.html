@@ -1,0 +1,14 @@
+<app-quote-style-board (newHeaderApply)="newHeaderApply($event)"
+                       (newBodyApply)="newBodyApply($event)"></app-quote-style-board>
+<div class="edit-block">
+  <div class="page-body">
+    <app-quote-header [user]="userData"
+                      [headerStyleApply]="newHeaderStyle"></app-quote-header>
+    <app-quote-form class="content"
+                    [affiliate_page]="true"
+                    [bodyStyleApply]="newBodyStyle"
+                    [h1_lead_info]="'Your info'"
+                    [h1_Vehicle_info]="'Your vehicle'"></app-quote-form>
+  </div>
+</div>
+

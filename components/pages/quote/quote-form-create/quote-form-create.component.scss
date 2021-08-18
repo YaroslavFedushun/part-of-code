@@ -1,0 +1,22 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/toco-theme";
+
+.page-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $main-gray-bg;
+}
+
+.edit-block {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px dashed gray;
+}
+
+.content {
+  width: 100%;
+}

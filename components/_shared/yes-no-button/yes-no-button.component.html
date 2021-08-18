@@ -1,0 +1,13 @@
+<div [class.clicked]="clicked">
+  <label class="switch" [class.active]="toggle" [class.notActive]="!toggle">
+    <input type="checkbox"
+           id="yesNoButton"
+           [(ngModel)]="toggle">
+    <span class="slider"></span>
+    <span class="switch-yes switch-text"
+          (click)="changeValue(true)">Yes</span>
+    <span class="switch-no switch-text"
+          (click)="changeValue(false)">No</span>
+  </label>
+
+</div>

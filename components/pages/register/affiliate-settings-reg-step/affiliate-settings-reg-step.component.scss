@@ -1,0 +1,50 @@
+@import "../../../../../assets/scss/toco-theme";
+
+h1 {
+  margin-bottom: 10px !important;
+}
+
+.subdomain {
+  padding-top: 22px;
+  font-weight: 700;
+  color: $main-color-gray;
+  padding-left: 0;
+  font-size: 19px;
+  border-radius: 4px;
+}
+
+
+.image-block {
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #eaeaea;
+}
+
+img {
+  max-width: 100%;
+}
+
+.activeButton {
+  background-color: $main-color-blue;
+  color: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media screen and (min-width: 925px) {
+  .thankYou {
+    padding-top: 35px;
+    padding-right: 25px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .subdomain {
+    text-align: right;
+    padding-top: 0;
+    margin-top: -20px;
+  }
+}

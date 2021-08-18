@@ -1,0 +1,39 @@
+
+input {
+  border-radius: 15px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-right: 10px;
+  border: 1px solid #c3c3c3;
+}
+
+.edit-quote-dashboard {
+  margin: 20px 0 20px 0;
+  background-color: #4c4c4c;
+  padding: 15px 20px;
+  color: #fff;
+}
+
+
+.pt-8 {
+  padding-top: 7px;
+}
+
+.title {
+  text-align: center;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn-group button {
+  width: 50%;
+}

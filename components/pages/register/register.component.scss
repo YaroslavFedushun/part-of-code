@@ -1,0 +1,34 @@
+@import "../../../../assets/scss/toco-theme";
+@import "../../../../assets/scss/functions";
+
+.hidden {
+  display:none;
+}
+
+
+
+@media screen and (min-width: 925px) {
+  .thankYou {
+    padding-top: 35px;
+    padding-right: 25px;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .tocoDesign-left {
+    padding-left: 34px;
+  }
+}
+
+.example-button-toggle-label {
+  display: none;
+}
+
+.thankYou {
+  background-image: url(/assets/images/tocoBird.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding-top: 70px;
+  margin-top: 60px;
+}
+

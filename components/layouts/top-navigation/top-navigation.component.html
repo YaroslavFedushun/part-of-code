@@ -1,0 +1,43 @@
+<nav>
+  <div [class.wight]="themeWight" [class.toco]="!themeWight">
+    <button mat-raised-button
+            *ngIf="currentUser"
+            class="nav-btn"
+            [routerLink]='["/dashboard"]'
+            routerLinkActive="active">
+      Dashboard
+    </button>
+
+    <button mat-raised-button
+            *ngIf="currentUser"
+            class="nav-btn"
+            [routerLink]='["/settings"]'
+            routerLinkActive="active">
+      Settings
+    </button>
+
+    <button mat-raised-button
+            *ngIf="!currentUser"
+            class="nav-btn"
+            [routerLink]='["/"]'
+            routerLinkActive="active">
+      Sign in
+    </button>
+
+    <button mat-raised-button
+            *ngIf="!currentUser"
+            class="nav-btn"
+            [routerLink]='["/register"]'
+            routerLinkActive="active">
+      Register
+    </button>
+
+    <button mat-raised-button
+            *ngIf="currentUser"
+            class="nav-btn"
+            (click)="logout()"
+            routerLinkActive="active">
+      Logout
+    </button>
+  </div>
+</nav>

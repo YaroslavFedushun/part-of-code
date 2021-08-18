@@ -1,0 +1,110 @@
+  <form [formGroup]="myForm">
+  <div class="separate-block ">
+    <div class="row">
+      <!--  First Name  -->
+      <div class="col-sm">
+        <mat-form-field>
+          <input type="text"
+                 id="firstName"
+                 formControlName="firstName"
+                 matInput
+                 placeholder="First Name"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['firstName'].errors && myForm.controls['firstName'].errors.required">
+            First name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['firstName'].errors && myForm.controls['firstName'].errors.pattern">
+            Please enter a valid first name address
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--  Last Name  -->
+      <div class="col-sm">
+        <mat-form-field>
+          <input type="text"
+                 id="lastName"
+                 formControlName="lastName"
+                 matInput
+                 placeholder="Last Name"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['lastName'].errors && myForm.controls['lastName'].errors.required">
+            Last name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['lastName'].errors && myForm.controls['lastName'].errors.pattern">
+            Please enter a valid last name address
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--  Email Address  -->
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field>
+          <input type="text"
+                 id="email"
+                 formControlName="email"
+                 matInput
+                 placeholder="Email Address"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.required">
+            Email address is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.pattern">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--  Phone  -->
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field>
+          <input type="text"
+                 mask="(000) 000-0000"
+                 id="phone"
+                 formControlName="phone"
+                 matInput
+                 placeholder="Phone"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['phone'].errors && myForm.controls['phone'].errors.required">
+            Phone is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['phone'].errors &&
+            (myForm.controls['phone'].errors.pattern || myForm.controls['phone'].errors['Mask error'])">
+            Please enter a valid phone
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--  Zip Code  -->
+      <div class="col-sm-6">
+        <mat-form-field>
+          <input type="text"
+                 mask="00000"
+                 id="zip"
+                 formControlName="zipCode"
+                 matInput
+                 placeholder="Zip Code"
+                 [errorStateMatcher]="matcher">
+          <mat-error *ngIf="myForm.controls['zipCode'].errors && myForm.controls['zipCode'].errors.required">
+            Zip code is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="myForm.controls['zipCode'].errors && myForm.controls['zipCode'].errors.pattern">
+            Please enter a valid zip code
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <!--  Submit -->
+  <div class=" row form-group">
+    <div class="col-sm-4">
+      <button mat-button
+              [style.background-color]="style.body_main_color"
+              id="submitButton"
+              (click)="createLead()"
+              class="btn btn-lg btn-toco-secondary button-text-shadow">
+        GO NEXT <i class="material-icons">  arrow_right_alt</i>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,47 @@
+<div class="tocoDesign">
+  <div class="tocoDesign-left"></div>
+  <div class="tocoDesign-right">
+    <p class="topNotice">You are signing in to your <span>affiliate</span> account</p>
+
+    <h1>It's great to have you back!</h1>
+
+    <form [formGroup]="myForm" class="mat-display">
+      <mat-form-field> 
+        <input matInput
+               id="email"
+               type="text"
+               placeholder="Email"
+               formControlName="email"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.email">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['email'].errors && myForm.controls['email'].errors.required">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               placeholder="Password"
+               [type]="hide ? 'password' : 'text'"
+               formControlName="password">
+        <mat-error *ngIf="!myForm.controls['password'].valid">
+          Password is <strong>required</strong>
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <br/>
+      <button class="submit mat-stroked-button mat-stroked-button-primary"
+              type="submit"
+              mat-stroked-button
+              (click)="login()">LOGIN</button>
+
+    </form>
+
+  </div>
+</div>
+

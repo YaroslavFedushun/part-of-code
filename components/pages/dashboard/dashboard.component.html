@@ -1,0 +1,23 @@
+<div class="tocoDesign">
+  <div class="tocoDesign-left"></div>
+  <div class="tocoDesign-right">
+    <mat-tab-group mat-align-tabs="start" [dynamicHeight]="true">
+
+      <mat-tab label="Create lead">
+        <div class="leadCreateBody">
+          <app-quote-form [h1_lead_info]="'Lead info'"
+                          [affiliate_page]="false"
+                          [h1_Vehicle_info]="'Vehicle info'">
+          </app-quote-form>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Public quote">
+        <div class="mat-tab-quote">
+            <app-quote-form-create></app-quote-form-create>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>
